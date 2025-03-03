@@ -1,0 +1,85 @@
+There is a some sort of documentation to my learning of React in future there will be next.js. This is some sort of Readme
+
+                                        Declarative coding on React
+
+        <script type="text/jsx">
+            const app = document.getElementById('app');
+            const root = ReactDOM.createRoot(app);
+            root.render(<h1>Develop. Preview. Ship.</h1>);
+        </script>
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+                        Imperative coding using only JS in general use a lot of non-generic code
+
+        <script type="text/javascript">
+            const app = document.getElementById('app');
+            const header = document.createElement('h1');
+            const text = 'Develop. Preview. Ship.';
+            const headerContent = document.createTextNode(text);
+            header.appendChild(headerContent);
+            app.appendChild(header);
+        </script>
+
+                        Using React as we can see cut down a lot of repetitive code
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+                                        Creating components on JS
+  A component is a function that returns UI elements. Inside the return statement of the function, you can write JSX
+So we add`s that component(in the midle of the my code) and we need to render that function so we're adding root.render(header); but we
+see nothing because we don`t learning any sort of javascript and i don`t know how to fix that problem solution will be on future.......
+
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            +(function header() {
+                return (<h1>Develop. Preview. Ship.</h1>)
+             })
+
+            const root = ReactDOM.createRoot(app);
+            + root.render(header);
+        </script>
+
+                        slightly we are moving to React vision of project so what about changes:
+
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header() {
+                return <h1>Develop. Preview. Ship.</h1>;
+            }
+
+            const root = ReactDOM.createRoot(app);
+            += root.render(<Header />);
+        </script>
+
+-----------------------------------------------------------------------------------------------------------------------------
+                     And now we are getting into our "Modularity" of our project
+                     in guide as I'm learning it call`s as component tree if correct
+                     and not miss informing we put our header into HomePage function
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header() {
+                return <h1>Develop. Preview. Ship.</h1>;
+            }
+
+            function HomePage() {
+                return (
+                  <div>
+                      {/* Nesting the Header component */}
+                      <Header />
+                  </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<Header />);
+        </script>
+-----------------------------------------------------------------------------------------------------------------------------
+documentation
+
