@@ -27,7 +27,7 @@ There is a some sort of documentation to my learning of React in future there wi
 
                                         Creating components on JS
   A component is a function that returns UI elements. Inside the return statement of the function, you can write JSX
-So we add`s that component(in the midle of the my code) and we need to render that function so we're adding root.render(header); but we
+So we add`s that component(in the middle of the my code) and we need to render that function so we're adding root.render(header); but we
 see nothing because we don`t learning any sort of javascript and i don`t know how to fix that problem solution will be on future.......
 
 
@@ -81,5 +81,278 @@ see nothing because we don`t learning any sort of javascript and i don`t know ho
             root.render(<Header />);
         </script>
 -----------------------------------------------------------------------------------------------------------------------------
-documentation
+Me as tester of React ass I want to test all functions
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header() {
+                return <h1>Develop. Preview. Ship.</h1>;
+            }
+
+            function HomePage() {
+                return (
+                  <div>
+                      {/* Nesting the Header component */}
+                      <Header />
+                      <Header />
+                  </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+
+It will gonna prints twice text that contains in Header
+
+------------------------------------------------------------------------------------------------------------------------------------------
+Using props, inheritance(наследование(переход из родительского класа в дочерний) в питоне за такое по рукам металической палкой б`ют)
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header(props) {
+                console.log(props); // { title: "React" }
+                return <h1>Develop. Preview. Ship.</h1>;
+            }
+
+            function HomePage() {
+                return (
+                  <div>
+                      <Header title="React" />
+                  </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+
+        var Header = [title="React"]
+------------------------------------------------------------------------------------------------------------------------------------------
+So what do we get here I don`t know how it works because(how it works but child class knows what status that configures in parent class assigned to child) :(
+
+            <script type="text/jsx">
+                const app = document.getElementById("app")
+
+                function Header(props) {
+                    console.log(props); // { title: "React" }
+                    return <h1>Develop. {props.title} Preview. Ship.{props.id}</h1>;
+                }
+
+                function HomePage() {
+                    return (
+                      <div>
+
+                          <Header title="React retetreterterterterter" id="123"/>
+                      </div>
+                    );
+                }
+
+                const root = ReactDOM.createRoot(app);
+                root.render(<HomePage />);
+            </script>
+
+
+So I know how to use that shit it makes it like dict and transportation
+
+------------------------------------------------------------------------------------------------------------------------------------------
+       we can change text in return<h1>{`Cool ${title}`}</h1> just adding $ it calls template literal
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header({ title }) {
+                return <h1>{`Cool ${title}`}</h1>;
+            }
+
+            function HomePage() {
+                return (
+                  <div>
+                      <Header title="React" id="123"/>
+                  </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+------------------------------------------------------------------------------------------------------------------------------------------
+        At that moment we have HomePage > Header > CreateTitle it call`s returned value of a function
+
+                <script type="text/jsx">
+                    const app = document.getElementById("app")
+
+                    function HomePage() {
+                        return (
+                          <div>
+                              <Header title="React" id="123"/>
+                          </div>
+                        );
+                    }
+
+                    function createTitle(title) {
+                        if (title) {
+                            return title;
+                        } else {
+                            return 'Default title';
+                        }
+                    }
+
+                    function Header({ title }) {
+                        return <h1>{createTitle(title)}</h1>;
+                    }
+
+                    const root = ReactDOM.createRoot(app);
+                    root.render(<HomePage />);
+                </script>
+------------------------------------------------------------------------------------------------------------------------------------------
+        Ternary Operators in this case we have the same thing as in the previous example but written a little differently.
+        That is, if we don't have a title, we will have a default Title. And if we do, the title itself will be displayed.
+                function Header({ title }) {
+                  return <h1>{title ? title : 'Default Title'}</h1>;
+                }
+        here is an example of using this Ternary Operator
+                ||
+                \/
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header({ title }) {
+                return <h1>{title ? title : 'Default title'}</h1>;
+            }
+
+            function HomePage() {
+                return (
+                  <div>
+                      <Header />
+                  </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+       And so my component can still accept generic support that I can reuse in different parts of my program
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header({ title }) {
+                return <h1>{title ? title : 'Default title'}</h1>;
+            }
+
+            function HomePage() {
+                return (
+                  <div>
+                      <Header title="React" />
+                      <Header title="A new title" />
+                  </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+
+        general use just to show that it works
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+    Iterating through lists we can basically take and trade lists to free up the data we need
+
+        <script type="text/jsx">
+            const app = document.getElementById("app")
+
+            function Header({ title }) {
+                return <h1>{title ? title : 'Default title'}</h1>;
+            }
+
+            function HomePage() {
+                const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+                return (
+                  <div>
+                      <Header title="Develop. Preview. Ship." />
+                      <ul>
+                          {names.map((name) => (
+                            <li>{name}</li>
+                          ))}
+                      </ul>
+                  </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+    if we have an array of some data, we can process it using these commands
+
+    array const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+    handler       <ul>
+                    {names.map((name) => (
+                      <li key={name}>{name}</li>
+                    ))}
+                  </ul>
+we have an array of values called names, and it has some values Anna Bogdan Kateryna And we take the method just map and in the brackets
+we will have name this is an array method that iterates through all the elements of names and returns an array of new elements then we
+render for each name a lay is created which contains its value and the third point is in our case Key = curly braces name where Key is our
+unique identifier of each ili which is needed by the REC to optimize the list update the key must be unique otherwise the rep may not work
+correctly
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Listening to events To avoid any hassle, I'll just describe it.
+
+            function HomePage() {
+                // 	...
+                function handleClick() {
+                    console.log('increment like count');
+                }
+
+                return (
+                  <div>
+                      {/* ... */}
+                      <button onClick={handleClick}>Like</button>
+                  </div>
+                );
+            }
+
+    all we have is a counter that outputs the value in console logs
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+We have such a wonderful method as UseState which helps us declare the variables we need to hold them just like the likes that are gaining
+some kind of number there. In fact, the program we described can be called an account that will count the number and store them in another
+change. But when updating it will disappear
+
+            function HomePage() {
+                // ...
+                const [likes, setLikes] = React.useState(0);
+
+                function handleClick() {
+                    setLikes(likes + 1);
+                }
+
+                return (
+                  <div>
+                      {/* ... */}
+                      <button onClick={handleClick}>Likes ({likes})</button>
+                  </div>
+                );
+            }
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Once again I want to draw attention to exceptions and conditional expressions, how to do it
+
+  якийсь текст {умова що треба ? шо треба якщо виповниться : шо якщо не виповниться} якийсь текст
 

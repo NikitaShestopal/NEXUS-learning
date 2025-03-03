@@ -34,3 +34,6 @@
         </script>
     </body>
 </html>
+
+here I described a program that, if there are no likes, simply displays the value of the
+like. And if there is already at least one like, it will display the like and their number.
